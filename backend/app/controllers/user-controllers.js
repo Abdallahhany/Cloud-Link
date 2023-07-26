@@ -5,7 +5,7 @@ const userModel = require('../models/user-model');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const configEnv = require('../config/config-env');
+const configEnv = require('../../config/config-env');
 
 
 // create a new user with the normal method
@@ -113,13 +113,9 @@ exports.googleAuth = async (req, res, next) => {
                     avatar: user.photos[0].value,
                 });
             }
-            console.log("userExists", userExists);
-            console.log("newUser", newUser);
 
             // Get the user id to use in the JWT payload
             const userId = userExists ? userExists.id : newUser.id;
-
-            console.log("userId", userId)
 
             // Generate a JWT token for the user
             const token = jwt.sign({id: userId}, configEnv.JWT_SECRET, {

@@ -8,7 +8,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 
 
-const userModel = require('../models/user-model');
+const userModel = require('../app/models/user-model');
 const bcrypt = require('bcrypt');
 const configEnv = require('../config/config-env');
 
@@ -88,7 +88,6 @@ passport.use(
             profileFields: ['id', 'displayName', 'photos', 'email', ],
             scope: ['email', 'user_birthday',]
         }, (accessToken, refreshToken, profile, done) => {
-            console.log(profile)
             done(null, profile);
         })
 )

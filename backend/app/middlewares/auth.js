@@ -1,7 +1,7 @@
 // to check whether the user is authenticated or not
 const jwt = require('jsonwebtoken');
 const userModel = require('../models/user-model');
-const configEnv = require('../config/config-env');
+const configEnv = require('../../config/config-env');
 
 const checkAuth = async (req, res, next) => {
     try {
